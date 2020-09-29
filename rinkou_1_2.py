@@ -20,6 +20,7 @@ def read_file(path):
 #        lines = f.readlines()
 #        lines = [ln.strip(os.linesep) for ln in lines]
 
+    lines.to_csv('{}_space.txt'.format(filename), sep=' ', header=False, index=False)
     return lines
 
 # change this function that uses pandas library
