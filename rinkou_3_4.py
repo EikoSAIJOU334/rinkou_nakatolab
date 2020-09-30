@@ -12,23 +12,37 @@ import pandas as pd
 import rinkou_1_2
 # Gina: rinkou_1_2で作成した関数の引用のため
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="show partial lines of file")
+    parser.add_argument("file", help="file path", type=str)
+    parser.add_argument("number", help="number of lines", type=int)
 
+    args = parser.parse_args()
 
-lines = rinkou_1_2.read_file(filename)
+    filename = args.file
+    nlines = args.number
+    print('file: %s' % filename)
+    print('number: %d' % nlines)
+
+#     len = count_lines(filename)
+
+#     print('length is {}'.format(len))
+
+    lines = rinkou_1_2.read_file(filename)
 # Gina: 他のスクリプトから自作関数を引用するときは、インポートするスクリプトファイルの名前も必要になります。
 # Gina: つまり、rinkou_1_2.read_file（）とすることで利用できます。
 
-# address.txtの読み込み
-# 変数名はadとした
-ad = pd.read_csv("address.txt", sep='\t', header=None)
+# SAIJOU: 便利ですね！
 
-# 自然数Nをコマンドライン引数で受け取る。今回は３とした。
-N = 3
+
+
 
 # 入力のうち先頭のN行を出力する
-print("先頭の" + str(N) + "行は")
-print(ad.head(N))
+    print("先頭の" + str(nlines) + "行は")
+    print(lines.head(nlines))
 
 # 入力のうち末尾のN行を出力する
-print("末尾の" + str(N) + "行は")
-print(ad.tail(N))
+    print("末尾の" + str(nlines) + "行は")
+    print(lines.tail(nlines))
+
+# SAIJOU: head, tail関数は作れなかったですが、寝ることにします。。。
