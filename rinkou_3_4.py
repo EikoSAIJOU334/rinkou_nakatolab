@@ -9,6 +9,15 @@ import argparse
 # Pandas、及び必要なライブラリのインポート
 import pandas as pd
 
+import rinkou_1_2
+# Gina: rinkou_1_2で作成した関数の引用のため
+
+
+
+lines = rinkou_1_2.read_file(filename)
+# Gina: 他のスクリプトから自作関数を引用するときは、インポートするスクリプトファイルの名前も必要になります。
+# Gina: つまり、rinkou_1_2.read_file（）とすることで利用できます。
+
 # address.txtの読み込み
 # 変数名はadとした
 ad = pd.read_csv("address.txt", sep='\t', header=None)
