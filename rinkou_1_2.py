@@ -30,7 +30,9 @@ def read_file(path):
 # change this function that uses pandas library
 def count_lines(file_path):
     lines = read_file(file_path)
-    lines.to_csv('{}_space.txt'.format(os.path.splitext(file_path)[0]), sep=' ', header=False, index=False)
+    prefix = os.path.splitext(file_path)[0]
+    output = '{}_space.txt'.format(prefix)
+    lines.to_csv(output, sep=' ', header=False, index=False)
         # Gina: read_file()から移しました。
         # Gina: ここのoutputのfile名の決め方、流石です！　.format()思いつきませんでした！
         # Gina: 関数の中で変数を一致させるために、filename -> pathにすると良いともいます
@@ -40,6 +42,10 @@ def count_lines(file_path):
         #       os.path.splitext(path)では、[".より前のファイル名",".を含んだ拡張子"]を出力します。
         #       今回の例では、["address",".txt"]になります。
         #       os.path.splitext(path)[0]とするとファイル名の文字列を選択できます。
+
+        # Gina: 中戸先生からのコメントとしては、lines.to_csv（）の中身が長いので、分割したほうが行が短くなって見やすいとのことでした
+        # Gina: Atomの画面に見えてる縦線が目安となるコードの長さだそうです
+
     return len(lines)
 
 # main関数を定義 (to increase readability)
@@ -58,6 +64,14 @@ if __name__ == "__main__":
     len = count_lines(filename)
 
     print('length is {}'.format(len))
+
+# 輪読の総括： 一連の作業をしているブロックは、行がたくさんにならないように関数で括り出すとスッキリする。
+#           -> 今回はpandasを使うと基本的に行が少なくなる。
+#           -> pandasに頼らなくても手動ですることもできる -> 堺谷さん、仲島さんチーム参照
+#
+#           最終的にはコマンド引数にオプションをつけたときに課題１〜５をそれぞれ実行するようにする。
+#           -> 牧野先生、王さんチームのコマンドが参考になります。
+#           -> 例えば、$python sample.py address.txt type1 とすると行数を出力するなど。
 
 ## 先頭を表示して読み込みの確認
 # print('データの先頭を表示')
