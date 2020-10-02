@@ -30,6 +30,7 @@ def read_file(path):
 # change this function that uses pandas library
 def count_lines(file_path):
     lines = read_file(file_path)
+    
     prefix = os.path.splitext(file_path)[0]
     output = '{}_space.txt'.format(prefix)
     lines.to_csv(output, sep=' ', header=False, index=False)
@@ -66,12 +67,14 @@ if __name__ == "__main__":
     print('length is {}'.format(len))
 
 # 輪読の総括： 一連の作業をしているブロックは、行がたくさんにならないように関数で括り出すとスッキリする。
-#           -> 今回はpandasを使うと基本的に行が少なくなる。
 #           -> pandasに頼らなくても手動ですることもできる -> 堺谷さん、仲島さんチーム参照
+#           -> 今回はpandasを使うと基本的に行が少なくなる。
 #
 #           最終的にはコマンド引数にオプションをつけたときに課題１〜５をそれぞれ実行するようにする。
 #           -> 牧野先生、王さんチームのコマンドが参考になります。
+#           -> コマンドライン引数にtype1やtype2があることを読み込むと別の処理ができるようにされていました。
 #           -> 例えば、$python sample.py address.txt type1 とすると行数を出力するなど。
+#           私たちの改善方法としては、まず、count_lines()の中に入れたlines.to_csvは別の関数を作ってそこに入れた方が良さそうです。
 
 ## 先頭を表示して読み込みの確認
 # print('データの先頭を表示')
