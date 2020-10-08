@@ -23,7 +23,7 @@ advanced aim:
     rinkou_advanced.py: main file.
     
 Running command is "python3 rinkou_main.py (type) (filename) (mnumber) (nnumber)".
-ex. $ python3 rinkou_main.py type6 address.txt 5 10
+ex. $ python3 rinkou_advanced.py type6 address.txt 5 10
 
 Type (6~8) of analysis:
             type6: display from m to n lines;
