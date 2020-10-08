@@ -37,7 +37,12 @@ def export_city(file_path):
 # 課題８、各行の２列目の文字列の出現頻度を求め、出現頻度の高い順にソートして標準出力に表示する関数
 def print_address(file_path):
     lines = read_file(file_path)
-    lines_groupby_address = lines.groupby('address') # addressごとにグループ化
-    lines_size_address = lines_groupby_address.size() # グループごとに数をカウント
-    lines_size_address_s = lines_size_address.sort_values('size')
-    print(lines_size_address_s['address'])
+    lines_groupby_address = lines['address'] # addressのみを抽出
+    lines_size_address = lines_groupby_address.value_counts(sort=True) # 数をカウント、ソート
+    print(lines_size_address)
+# Gina:こちらもgroupbyではソートがうまくいかなかったので.value_counts()を使いました。
+
+#    lines_groupby_address = lines.groupby('address') # addressごとにグループ化
+#    lines_size_address = lines_groupby_address.size() # グループごとに数をカウント
+#    lines_size_address_s = lines_size_address.sort_values('size')
+#    print(lines_size_address_s['address'])
