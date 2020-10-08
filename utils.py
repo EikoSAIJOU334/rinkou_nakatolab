@@ -47,5 +47,10 @@ def print_tail_n(file_path, nlines):
 #課題５、１列目の文字列を集計して標準出力に表示する関数
 def count_city_number(file_path):
     lines = read_file(file_path)
-    lines_groupby = lines.groupby('city')
-    print(lines_groupby.count())
+    lines_city_count = lines["city"].value_counts(sort=True)
+    print(lines_city_count)
+# Gina: groupbyだとソートができなかったので、堺谷さんたちのグループの.value_counts()を参考にしました。
+# Gina: sort=Trueとすると昇順にソートしてくれるようです。
+
+#    lines_groupby = lines.groupby('city')
+#    print(lines_groupby.count().sort_values())
